@@ -14,7 +14,7 @@ else
     _pkgver=${_basekernel}.${_sub}
 fi
 pkgver=6.12.8_rt8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
