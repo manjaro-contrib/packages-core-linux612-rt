@@ -4,8 +4,8 @@
 pkgbase=linux612-rt
 pkgname=("$pkgbase" "$pkgbase-headers")
 _basekernel=6.12
-_sub=16
-_rtpatchver=rt9
+_sub=28
+_rtpatchver=rt10
 _basever=${pkgbase//linux}
 _kernelname=-MANJARO
 if [[ "$_sub" == "0" ]]; then
@@ -13,8 +13,8 @@ if [[ "$_sub" == "0" ]]; then
 else
     _pkgver=${_basekernel}.${_sub}
 fi
-pkgver=6.12.16_rt9
-pkgrel=2
+pkgver=6.12.28_rt10
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -36,7 +36,6 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
         0005-platform-x86-asus-wmi-Refactor-Ally-suspend-resume.patch
         0006-hid-asus-set-mcu-hack-to-off-if-required-MCU-version.patch
         0007-hid-asus-ally-Add-joystick-LED-ring-support.patch
-        0007-mt7921e_Perform_FLR_to_recovery_the_device.patch
         0008-hid-asus-ally-initial-Ally-X-gamepad.patch
         0009-hid-asus-ally-initial-gamepad-configuration.patch
         0010-hid-asus-ally-add-button-remap-attributes.patch
@@ -63,19 +62,13 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
         0031-hda-tas2781-add-speaker-id-check-for-ASUS-projects.patch::https://lore.kernel.org/lkml/20241123073718.475-1-baojun.xu@ti.com/raw
         # OrangePi Neo patches
         0001-iio_imu_Add_driver_for_Bosch_BMI260_IMU.patch
-        # Zotac Zone patches
-        636de3f2be1d171b50c47b9f038b7a5b19d8667d.patch
-        aa776ec5fb0ff9f94cb546773e76a248e05084b5.patch
-        # Steamdeck (OLED)
-        0001-steam-deck.patch
-        0002-steamdeck-oled-audio.patch
         # RT Patch
         "$url/pub/linux/kernel/projects/rt/${_basekernel}/patch-${_pkgver}-${_rtpatchver}.patch.xz")
 
 _srcdir="linux-${_basekernel}"
 
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
-            '198efb70f0fa09d8d2b4fece24ef854889a6316d2d5e0b3662c8a6e14555fe8e'
+            'fa1e6dcc59f07016c9fefa872ba5c84e53e1b6ae857b32b59c3cb2efcc56fe54'
             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
             '934bc233684c45860251bb75433d671b23fa784c891ab3a1ef10d5bc761156b6'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
@@ -86,7 +79,6 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'ac9c7fbe9db664f933c8153334cacbfc6f25946ea0488800de4ac4e9c93e4dd0'
             '7893450bfae2bba7a1d20d29ad1791cadde32197297acb84bbbed1d952d24052'
             '5a5a0f80e76b693f0e06d1644bb81b0f3720fca7e14435fc06ecfaa187380602'
-            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             '3fac0fb57c769bfef57d71d78d1b5f681947c2146ef30d7a9afdc87805eda058'
             '20e07201d951773ff60b9b4f201bf21386ea3102a80e4a158bbaeb7bc1ae1b45'
             '5b515dc4e43f5e3638a9f09318361c2f26964612df511d54a41149147926c40d'
@@ -112,12 +104,8 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             '69be0b12d0df47866b65d969f1354acda58fb09d576763431ec3b1bc120c7cf1'
             '353af1b0411c4400277cf49270d1183e1678d46e5a77ea043be948fa1cbb9db2'
             'e58b6631da6dcc302984c30882276026a449228833cfb01d157a85ff1064080e'
-            '5dabdb1d45f1edd9bfaeebbc4a8767812fae5b4de9866cedecab7bfcf982b8ee'
-            '4a9d290f020ff88617ecb7c2aa38ecee796dc800b677dd2fa9c8f64797a33aa0'
-            'f8cf8ad3e17857b51c3f7dd954eb5ac7ba44bfe0302a40e70b2c496573407edf'
-            '17c49b6eb2602d4796b8c47e8e9c30684404f9300d71278475ddf61a4025ca88'
-            'd78490bb1aea4d36d263d104839556b30a85113cb30aeb74c61c1331d104dac1'
-            'befcc91870534b297f35ac6cfc861ab8ecc0f97d4e96c442904c731d4a0f3ae7')
+            '8f55b905db0c1b856a67828c200d5e3d158ed53e26d1b4e36bbe2f083909fef3'
+            '128f8bf9853332de0b2a2825a287d119349408216ffbfe2a9a63b2b0e911e1c1')
 if [[ ! "$_sub" == "0" ]]; then
   source+=("$url/pub/linux/kernel/v6.x/patch-${_pkgver}.xz")
 fi
