@@ -167,8 +167,16 @@ build() {
 
 package_linux612-rt() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country')
+  depends=(
+    'coreutils'
+    'initramfs'
+    'kmod'
+  )
+  optdepends=(
+    'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
+  )
   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd "$_srcdir"
