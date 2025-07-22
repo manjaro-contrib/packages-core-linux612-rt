@@ -4,8 +4,8 @@
 pkgbase=linux612-rt
 pkgname=("$pkgbase" "$pkgbase-headers")
 _basekernel=6.12
-_sub=28
-_rtpatchver=rt10
+_sub=39
+_rtpatchver=rt11
 _basever=${pkgbase//linux}
 _kernelname=-MANJARO
 if [[ "$_sub" == "0" ]]; then
@@ -13,7 +13,7 @@ if [[ "$_sub" == "0" ]]; then
 else
     _pkgver=${_basekernel}.${_sub}
 fi
-pkgver=6.12.28_rt10
+pkgver=6.12.39_rt11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,12 +26,13 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
         # ARCH Patches
         0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
         0102-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
-        0103_default_to_max_ASLR_bits.patch
+        #0006-Revert-drm-amd-display-more-liberal-vmin-vmax-update.patch
         # Realtek patch
         0999-patch_realtek.patch
         # ROG ALLY Patches (wip/ally-6.12)
         0001-drm-amd-display-Avoid-divide-by-zero-by-initializing.patch
         0002-Tmp-add-GA605W-H7606W-to-AMD-PMF-quirks.patch
+        revert-upstream-hid-asus-check-ROG-Ally-MCU-version-and-warn.patch
         0004-hid-asus-check-ROG-Ally-MCU-version-and-warn.patch
         0005-platform-x86-asus-wmi-Refactor-Ally-suspend-resume.patch
         0006-hid-asus-set-mcu-hack-to-off-if-required-MCU-version.patch
@@ -68,15 +69,15 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
 _srcdir="linux-${_basekernel}"
 
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
-            'fa1e6dcc59f07016c9fefa872ba5c84e53e1b6ae857b32b59c3cb2efcc56fe54'
+            'd4099bedbe697b39c606e6b0a7b182f60e5ec120a5ae3f7e789fb848a95d3bd7'
             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
             '934bc233684c45860251bb75433d671b23fa784c891ab3a1ef10d5bc761156b6'
-            '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
             'b88d42565ce771cb6c8f98b7c05aada6b8024578a1985e5772dc5a2d07facee0'
             'c5288dd3057ced81018db254c94fd7ee8dfc5d4687064b5ae234d56f04ad1069'
             'a4ec35907f4d532b45599821a74e7703e21a4df1677a3c057c433d13b31816a4'
+            '8a4765598fd6090a5cbfddb40470362d99968463a47e605f9ee4e45be06d25c0'
             'a1c2e372d771b1bd42cb5f1e51718ea2c8af4fa911f4fd640d8d10cbf1e59cb0'
-            'ac9c7fbe9db664f933c8153334cacbfc6f25946ea0488800de4ac4e9c93e4dd0'
+            '76eb9ac8f1a9928fa1f2222171633801898a5f89a139241443ec3c7df46b8531'
             '7893450bfae2bba7a1d20d29ad1791cadde32197297acb84bbbed1d952d24052'
             '5a5a0f80e76b693f0e06d1644bb81b0f3720fca7e14435fc06ecfaa187380602'
             '3fac0fb57c769bfef57d71d78d1b5f681947c2146ef30d7a9afdc87805eda058'
@@ -104,8 +105,8 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             '69be0b12d0df47866b65d969f1354acda58fb09d576763431ec3b1bc120c7cf1'
             '353af1b0411c4400277cf49270d1183e1678d46e5a77ea043be948fa1cbb9db2'
             'e58b6631da6dcc302984c30882276026a449228833cfb01d157a85ff1064080e'
-            '8f55b905db0c1b856a67828c200d5e3d158ed53e26d1b4e36bbe2f083909fef3'
-            '128f8bf9853332de0b2a2825a287d119349408216ffbfe2a9a63b2b0e911e1c1')
+            '1ae10dd99f23a45e902ca7c5213e633a5f67fcbb1dba8ce300bdab8db607df77'
+            'ae58f6339601e46ab2c19cb36c5c922a7fd39d7b7763ab62a530849cc8f14f2d')
 if [[ ! "$_sub" == "0" ]]; then
   source+=("$url/pub/linux/kernel/v6.x/patch-${_pkgver}.xz")
 fi
