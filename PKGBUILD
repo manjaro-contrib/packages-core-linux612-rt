@@ -4,8 +4,8 @@
 pkgbase=linux612-rt
 pkgname=("$pkgbase" "$pkgbase-headers")
 _basekernel=6.12
-_sub=43
-_rtpatchver=rt12
+_sub=49
+_rtpatchver=rt13
 _basever=${pkgbase//linux}
 _kernelname=-MANJARO
 if [[ "$_sub" == "0" ]]; then
@@ -13,7 +13,7 @@ if [[ "$_sub" == "0" ]]; then
 else
     _pkgver=${_basekernel}.${_sub}
 fi
-pkgver=6.12.43_rt12
+pkgver=6.12.49_rt13
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,8 +24,6 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
         # rt-config
         'config.rt'
         # Upstream Patches
-        # https://gitlab.freedesktop.org/drm/amd/-/issues/4441
-        0000-drm-amdgpu-discovery-optionally-use-fw-based-ip-discovery.patch::https://lore.kernel.org/stable/20250730155900.22657-1-alexander.deucher@amd.com/raw
         # ARCH Patches
         0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
         0102-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
@@ -71,8 +69,7 @@ source=("$url/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
 _srcdir="linux-${_basekernel}"
 
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
-            'fb556fbf23dd1c94aa3e2c8ba894f742b08f7a84dd7eba01e6142b33269384d3'
-            'e3f97ec9271ad09de19ff0611d22ce10e6314b5984379dc6ac4bbd443b26b936'
+            '869a80a9c2cb633423a7de4f7b7cdc8e0410cb289e3e0a361b6d5c252f16374e'
             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
             '934bc233684c45860251bb75433d671b23fa784c891ab3a1ef10d5bc761156b6'
             'b88d42565ce771cb6c8f98b7c05aada6b8024578a1985e5772dc5a2d07facee0'
@@ -108,8 +105,8 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             '69be0b12d0df47866b65d969f1354acda58fb09d576763431ec3b1bc120c7cf1'
             '353af1b0411c4400277cf49270d1183e1678d46e5a77ea043be948fa1cbb9db2'
             'e58b6631da6dcc302984c30882276026a449228833cfb01d157a85ff1064080e'
-            'dfd2a3f6f0258a4b5ddcd37c89600ddb5bf21f8e533791407a67a33cc00e285b'
-            '3d6db5df347ddb1d733a7f06b547961ccaa6907655cd6dd71c63233c55c609f0')
+            '6d4b325649b74c443a7f9577dc5a3972e9f46316aac2538cab0ff5944685c361'
+            '98f9289557d0eb48ec1dac023f0710256e1b0ea61d0678d8011b7261533cc646')
 if [[ ! "$_sub" == "0" ]]; then
   source+=("$url/pub/linux/kernel/v6.x/patch-${_pkgver}.xz")
 fi
