@@ -4,8 +4,8 @@
 pkgbase=linux612-rt
 pkgname=("$pkgbase" "$pkgbase-headers")
 _basekernel=6.12
-_sub=74
-_rtpatchver=rt16
+_sub=79
+_rtpatchver=rt17
 _basever=${pkgbase//linux}
 _kernelname=-MANJARO
 if [[ "$_sub" == "0" ]]; then
@@ -13,7 +13,7 @@ if [[ "$_sub" == "0" ]]; then
 else
     _pkgver=${_basekernel}.${_sub}
 fi
-pkgver=6.12.74_rt16
+pkgver=6.12.79_rt17
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -106,8 +106,8 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             '69be0b12d0df47866b65d969f1354acda58fb09d576763431ec3b1bc120c7cf1'
             '353af1b0411c4400277cf49270d1183e1678d46e5a77ea043be948fa1cbb9db2'
             'e58b6631da6dcc302984c30882276026a449228833cfb01d157a85ff1064080e'
-            '5a7ac03c3e682b24ae399821e86d0934b59525ba69c4c69701634f2ea9503c7a'
-            'fe1def8f2c9af95dcf0f3b9dc31722bd4fb359e4d6464d2f58e362db748650f6')
+            'a2c245a74557efd2a0f65b0df453434f169affefd89249b9b10539d110d9c69e'
+            '86d5b8289519bd105e882c10f7535d51537eb0a808127fd54c05c8dbdfea97d6')
 if [[ ! "$_sub" == "0" ]]; then
   source+=("$url/pub/linux/kernel/v6.x/patch-${_pkgver}.xz")
 fi
