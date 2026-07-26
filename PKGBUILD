@@ -14,7 +14,7 @@ else
     _pkgver=${_basekernel}.${_sub}
 fi
 pkgver=6.12.89_rt18
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
