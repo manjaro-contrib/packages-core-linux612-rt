@@ -1,5 +1,5 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org
-# Archlinux-Maintainer
+# Maintainer:
+# Contributor: Bernhard Landauer <bernhard@manjaro.org
 
 pkgbase=linux612-rt
 pkgname=("$pkgbase" "$pkgbase-headers")
